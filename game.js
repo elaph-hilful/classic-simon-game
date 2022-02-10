@@ -2,8 +2,21 @@
 var buttonColours = ["red","blue","green","yellow"];
 var gamePattern = [];
 var userClickedPattern = [];
+var level = 0;
+var started = false;
 // alert("This is the game.js page!!!");
+    $(document).keypress(function() {
+    if (!started) {
+  
+      //3. The h1 title starts out saying "Press A Key to Start", when the game has started, change this to say "Level 0".
+      $("#level-title").text("Level " + level);
+      nextSequence();
+      started = true;
+    }
+  });
 function nextSequence(){
+    level++;
+    $("#level-title").text("Level "+ level);
     var randomNumber = Math.floor(Math.random()*4);
     // console.log(randomNumber);
     var randomChosenColour = buttonColours[randomNumber];
@@ -37,3 +50,4 @@ function animatePress(currentColour){
 
         
 }
+
