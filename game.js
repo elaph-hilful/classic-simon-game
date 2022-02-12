@@ -18,7 +18,7 @@ var started = false;
   function checkAnswer(currentLevel){
     if (gamePattern[currentLevel] === userClickedPattern[currentLevel])
     {
-        console.log("Success!");
+       
         if(userClickedPattern.length === gamePattern.length)
         {
             setTimeout(() => {
@@ -27,13 +27,15 @@ var started = false;
         }
     }
     else{
-        console.log("Wrong");
+        
         playSound("wrong");
         $("body").addClass("game-over");
+        $("#level-title").text("Game Over, Press Any Key to Restart");
         setTimeout(() => {
-            $(body).removeClass("game-over");
+            $("body").removeClass("game-over");
         }, 200);
-        $("h1").text("Game Over, Press Any Key to Restart");
+        
+        startOver();
     }
 }
 
@@ -77,3 +79,8 @@ function animatePress(currentColour){
         
 }
 
+function startOver(){
+        level = 0;
+        gamePattern = [];
+        started = false;
+}
